@@ -58,18 +58,7 @@ Coluna auxiliar `faixa_atraso` calculada com:
 | Score médio             | `=AVERAGE(base_pagamentos[score_credito])`                                                                        |
 | Atraso médio (dias)     | `=AVERAGEIF(base_pagamentos[situacao_pagamento],"Atrasado",base_pagamentos[dias_atraso])`                        |
 
-> **Correção aplicada — Ticket Médio PF/PJ:**
-> A versão anterior usava `AVERAGEIF(base_pagamentos[segmento],"PF",contratos[valor_total])`,
-> cruzando duas tabelas com granularidades diferentes (8 linhas de pagamentos × 5 linhas de
-> contratos). Isso retorna `#VALOR!` no Excel real porque os vetores têm tamanhos distintos.
-> A correção foi referenciar apenas a aba `contratos` nos dois argumentos do AVERAGEIF.
->
-> **Correção aplicada — Valor em risco:**
-> A versão anterior usava `SUMIF(...,"Não pago",...)`, o que excluía o pagamento parcial de
-> João Ferreira (contrato 104, pagou R$600 de R$708,33 — saldo de R$108,33 em aberto).
-> A correção usa SUMPRODUCT calculando o saldo residual diretamente.
 
----
 
 ### Aba `aging`
 
