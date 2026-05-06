@@ -1,3 +1,4 @@
+
 # Análise de Inadimplência e Performance Financeira
 
 Análise de uma carteira de crédito simulada com foco em inadimplência, aging de parcelas, exposição financeira por segmento e correlação entre score de crédito e comportamento de pagamento.
@@ -18,11 +19,25 @@ Análise de uma carteira de crédito simulada com foco em inadimplência, aging 
 ## Ferramentas Utilizadas
 
 - **SQL (PostgreSQL)** — modelagem, ETL e queries analíticas
+- **Python 3.9** — análise exploratória, visualizações e descobertas
 - **Excel Avançado** — tabela dinâmica, slicers, formatação condicional
-- **Power BI + DAX** — dashboard interativo com 4 páginas e medidas calculadas
 
 ---
 
+## Estrutura do Projeto
+
+```
+📁 Analise-de-Inadimplencia-e-Performance-Financeira/
+├── dados_clientes.csv
+├── dados_contratos.csv
+├── dados_pagamentos.csv
+├── analise_inadimplencia.ipynb
+├── queries.sql
+├── excel.md
+└── README.md
+```
+
+---
 
 ## Etapas Realizadas
 
@@ -30,10 +45,10 @@ Análise de uma carteira de crédito simulada com foco em inadimplência, aging 
 
 - Criação do modelo relacional com 3 tabelas: `clientes`, `contratos`, `pagamentos`
 - View enriquecida `vw_pagamentos_enriquecidos` consolidando dados das 3 tabelas
-- Limpeza de dados: identificação de registros inconsistentes e recalculo de `dias_atraso`
+- Limpeza de dados: identificação de registros inconsistentes e recálculo de `dias_atraso`
 - Dicionário de dados documentado diretamente no script
 
-### KPIs Analíticos
+### KPIs Analíticos (SQL)
 
 - Taxa de inadimplência por produto
 - Exposição financeira em risco por UF
@@ -41,6 +56,17 @@ Análise de uma carteira de crédito simulada com foco em inadimplência, aging 
 - Ticket médio e volume por segmento (PF vs PJ)
 - Identificação dos clientes de maior risco
 - Tendência mensal de pagamentos (série temporal)
+
+### Análise Exploratória (Python)
+
+- Merge das 3 tabelas e enriquecimento com colunas calculadas
+- Visão geral da carteira com KPIs consolidados
+- Distribuição de status dos contratos
+- Inadimplência por produto
+- Aging — quantidade e valor em aberto por faixa de atraso
+- Comparativo PF vs PJ: volume, ticket médio e score
+- Correlação entre score de crédito e dias de atraso
+- Mapa de correlação entre variáveis numéricas
 
 ### Excel
 
@@ -50,13 +76,6 @@ Análise de uma carteira de crédito simulada com foco em inadimplência, aging 
 - Formatação condicional por faixa de atraso
 - Dashboard com 4 gráficos e segmentações interativas (slicers)
 
-### Power BI
-
-- Relacionamentos entre as 3 tabelas no modelo estrela
-- Tabela `Calendário` com DAX para inteligência de tempo
-- 6 medidas DAX: Taxa de Inadimplência, Valor em Risco, Ticket Médio, Atraso Médio, Adimplência do Mês e variação MoM
-- 4 páginas: Visão Executiva, Análise de Inadimplência, Análise de Clientes, Drill-Through por Contrato
-
 ---
 
 ## Principais Descobertas
@@ -64,7 +83,7 @@ Análise de uma carteira de crédito simulada com foco em inadimplência, aging 
 ### Concentração de Risco em PJ
 
 - Clientes PJ representam **40% da base**, mas concentram **92% do valor inadimplente**
-- Isso indica risco assimétrico — o volume financeiro por contrato PJ é muito superior ao PF
+- Risco assimétrico — o volume financeiro por contrato PJ é muito superior ao PF
 
 ### Score de Crédito como Preditor
 
@@ -90,6 +109,15 @@ Análise de uma carteira de crédito simulada com foco em inadimplência, aging 
 | 01–30 dias | 1 | R$ 1.167 |
 | 31–90 dias | 1 | R$ 708 |
 | 90+ dias | 2 | R$ 20.000 |
+
+---
+
+## Bibliotecas Python
+
+- **Pandas** — manipulação e análise de dados
+- **NumPy** — operações numéricas
+- **Matplotlib** — gráficos e customizações
+- **Seaborn** — visualizações estatísticas
 
 ---
 
