@@ -1,12 +1,6 @@
--- ============================================================
--- Análise de Inadimplência e Performance Financeira
--- SQL (PostgreSQL)
--- Versão corrigida — Arthur Villar
--- ============================================================
 
--- ------------------------------------------------------------
 -- 1. MODELAGEM (DDL)
--- ------------------------------------------------------------
+
 
 CREATE TABLE clientes (
     cliente_id    INT PRIMARY KEY,
@@ -37,9 +31,8 @@ CREATE TABLE pagamentos (
     dias_atraso     INT
 );
 
--- ------------------------------------------------------------
 -- 2. CARGA (DML)
--- ------------------------------------------------------------
+
 
 INSERT INTO clientes VALUES
     (1, 'Ana Souza',      'PF', 'SP', '2021-03-10', 720),
@@ -70,11 +63,10 @@ INSERT INTO pagamentos VALUES
     (1007, 104, '2023-08-01', '2023-09-15', 708.33,   600.00,   45),
     (1008, 105, '2023-09-01', '2023-09-01', 2291.67,  2291.67,  0);
 
--- ------------------------------------------------------------
 -- 3. ETL
--- ------------------------------------------------------------
 
--- Recalcula dias_atraso nos registros nulos
+
+-- dias_atraso nos registros nulos
 UPDATE pagamentos
 SET dias_atraso = CASE
     WHEN data_pagamento IS NOT NULL
@@ -84,7 +76,6 @@ SET dias_atraso = CASE
     END
 WHERE dias_atraso IS NULL;
 
--- View enriquecida consolidando as 3 tabelas
 CREATE OR REPLACE VIEW vw_pagamentos_enriquecidos AS
 SELECT
     p.pagamento_id,
@@ -110,9 +101,9 @@ FROM pagamentos  p
 JOIN contratos  ct ON p.contrato_id  = ct.contrato_id
 JOIN clientes   cl ON ct.cliente_id  = cl.cliente_id;
 
--- ------------------------------------------------------------
+
 -- 4. KPIs ANALÍTICOS
--- ------------------------------------------------------------
+
 
 -- Taxa de inadimplência por produto
 SELECT
@@ -202,9 +193,7 @@ WHERE data_pagamento IS NOT NULL
 GROUP BY 1
 ORDER BY 1;
 
--- ------------------------------------------------------------
 -- 5. ANÁLISE EXPLORATÓRIA
--- ------------------------------------------------------------
 
 -- Correlação entre faixa de score e % de atraso
 SELECT
