@@ -23,16 +23,6 @@ Análise de uma carteira de crédito simulada com foco em inadimplência, aging 
 
 ---
 
-## Estrutura do Projeto
-
-```
-📁 projeto-inadimplencia/
-├── projeto_matera_sql.sql       # DDL, DML, ETL, views e queries analíticas
-├── projeto_matera_guia.md       # Guia de implementação Excel + Power BI
-└── README.md
-```
-
----
 
 ## Etapas Realizadas
 
