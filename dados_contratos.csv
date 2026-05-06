@@ -1,0 +1,6 @@
+contrato_id,cliente_id,produto,valor_total,data_inicio,data_vencimento,status
+101,1,Crédito Pessoal,15000.00,2023-01-01,2024-01-01,Quitado
+102,2,Consignado,28000.00,2023-03-01,2025-03-01,Ativo
+103,3,Capital de Giro,120000.00,2022-06-01,2024-06-01,Inadimplente
+104,4,Crédito Pessoal,8500.00,2023-07-01,2024-07-01,Renegociado
+105,5,Capital de Giro,55000.00,2023-02-01,2025-02-01,Ativo
