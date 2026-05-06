@@ -5,7 +5,7 @@
 ## Estrutura do Arquivo
 
 ### Aba `base_pagamentos`
-Dados importados da view `vw_pagamentos_enriquecidos` (export CSV do SQL).
+
 
 | Coluna | Tipo | Descrição |
 | --- | --- | --- |
