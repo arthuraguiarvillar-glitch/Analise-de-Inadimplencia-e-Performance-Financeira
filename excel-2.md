@@ -35,9 +35,6 @@ Coluna auxiliar `faixa_atraso` calculada com:
 
 ### Aba `contratos` *(necessária para ticket médio)*
 
-> **Nota:** Para calcular ticket médio por segmento de forma correta, o arquivo Excel
-> deve conter uma segunda aba `contratos` com as colunas `contrato_id`, `segmento` e
-> `valor_total` (5 linhas — uma por contrato). O AVERAGEIFS abaixo referencia essa aba.
 
 | Coluna       | Tipo   | Descrição                           |
 |--------------|--------|-------------------------------------|
